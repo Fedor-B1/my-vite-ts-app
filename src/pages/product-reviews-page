@@ -1,0 +1,39 @@
+import { useQuery } from '@tanstack/react-query';
+import { getReviews, type Review } from "../api/product-reviews";
+import { ReviewCard } from "../components/product-reviews-card";
+
+export function ProductReviewsPage() {
+  const { data, refetch, isLoading, isFetching } = useQuery({
+    queryKey: ['reviews'],
+    queryFn: getReviews
+  });
+
+  const loading = isFetching || isLoading;
+
+  return (
+    <div>
+      <div>
+        <h1>Product Reviews</h1>
+      </div>
+      <button
+        type="button"
+        className="counter"
+        onClick={() => refetch()}
+        disabled={loading}
+      >
+      </button>
+
+      {loading && <p>Loading reviews...</p>}
+
+      {data?.data && (
+        <div style={{ display: 'grid', gap: '16px', marginTop: '20px' }}>
+          {data.data.map((review: Review) => (
+            <ReviewCard key={review.id} review={review} />
+          ))}
+        </div>
+      )}
+
+      {!loading && !data?.data && <p>No reviews found.</p>}
+    </div>
+  );
+}
