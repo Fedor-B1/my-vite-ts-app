@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 import './App.css';
 import { getUsers, type User } from './api/users';
 import { UsersPage } from './pages/UsersPage';
-import { ProductReviewsPage } from './pages/ProductReviewsPage';
+import { ProductReviewsPage } from './pages/product-reviews-page';
 
 function App() {
   const [users, setUsers] = useState<User[]>([]);

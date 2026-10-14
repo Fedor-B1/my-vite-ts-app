@@ -122,3 +122,9 @@ code {
   border-radius: 12px;
   width: 150px;
 }
+
+.selectedUserCard {
+  background-color: pink;
+  border-radius: 12px;
+  width: 150px;
+}
